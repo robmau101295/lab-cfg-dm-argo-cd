@@ -1,0 +1,19 @@
+# Valores "de infraestructura" de la app en dev. Los nombres DEBEN coincidir
+# con lo que crea Terraform (acoplamiento por nombre):
+#   - secreto:  eks-<cluster>-<namespace>-<grupo>/secrets  (lab-iac-do-k8s-demo-secrets)
+#   - tabla:    <cluster>-<namespace>-<tabla>              (lab-iac-do-k8s-demo/dynamodb.tf)
+secrets:
+  remoteKey: "eks-lab-dev-r1-demo-app/secrets"
+
+envvars:
+  DYNAMODB_TABLE: "lab-dev-r1-demo-rachas"
+  # Permite marcar días "simulados" desde la página (para ver la racha crecer
+  # sin esperar días reales). Solo en dev.
+  PERMITIR_FECHA_SIMULADA: "true"
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    memory: 192Mi

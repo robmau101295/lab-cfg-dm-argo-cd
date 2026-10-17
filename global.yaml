@@ -1,0 +1,11 @@
+# Valores para TODAS las apps del dominio en TODOS los ambientes.
+# OJO: un cambio aquí afecta a todas las apps (en la empresa, el argo-sync
+# re-sincroniza todo el dominio cuando cambia un global*.yaml).
+container:
+  image:
+    # Registro ECR de tu cuenta (lo reemplaza el script personalizar.sh).
+    registry: "590183926189.dkr.ecr.us-east-1.amazonaws.com"
+
+# Los pods corren en los nodos del node group "addons" (el único del laboratorio).
+nodeSelector:
+  node-group: addons

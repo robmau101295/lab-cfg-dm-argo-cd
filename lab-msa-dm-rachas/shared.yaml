@@ -1,0 +1,25 @@
+# Valores de lab-msa-dm-rachas iguales en todos los ambientes.
+container:
+  port: 8080
+
+secrets:
+  enabled: true
+  # SecretStore del namespace demo (lo crea lab-iac-do-k8s-demo-secrets).
+  secretStoreName: demo
+
+# La página web se abre desde tu navegador: AWS crea un Load Balancer público,
+# abierto SOLO a tu IP (personalizar.sh pone tu IP; si cambia, edítala aquí).
+service:
+  type: LoadBalancer
+  port: 80
+  loadBalancerSourceRanges:
+    - "181.196.72.203/32"
+
+probes:
+  path: /health        # liveness: ¿el proceso de Node vive?
+  readinessPath: /ready # readiness: ¿llega a DynamoDB con su rol IRSA?
+
+# Con 2 réplicas, durante el upgrade del clúster (Fase 7) siempre queda 1 viva.
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
