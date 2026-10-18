@@ -2,7 +2,7 @@
 environment: "dev"
 container:
   image:
-    tag: "av20261018.4"
+    tag: "av20261018.6"
 # 2 réplicas: la página muestra qué pod respondió, y el upgrade del clúster
 # no corta el servicio (ver podDisruptionBudget en shared.yaml).
 replicaCount: 2
