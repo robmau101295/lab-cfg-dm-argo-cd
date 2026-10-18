@@ -1,10 +1,8 @@
 # Valores de la app en dev. El CD (sync-tag) reescribe container.image.tag.
 environment: "dev"
-
 container:
   image:
-    tag: "PENDIENTE_PRIMER_CI"
-
+    tag: "av20261018.4"
 # 2 réplicas: la página muestra qué pod respondió, y el upgrade del clúster
 # no corta el servicio (ver podDisruptionBudget en shared.yaml).
 replicaCount: 2
